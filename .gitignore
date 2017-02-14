@@ -10,6 +10,7 @@
 
 # Session Data files
 .RData
+ .RData
 *.~lock.*
 
 # Example code in package build process
