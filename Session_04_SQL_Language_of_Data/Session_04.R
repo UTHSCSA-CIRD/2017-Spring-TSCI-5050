@@ -9,7 +9,7 @@ if(!require(RSQLite)) install.packages(RSQLite,repos="https://cran.rstudio.com/"
 if(!require(xtable)) install.packages(xtable,repos="https://cran.rstudio.com/");
 #' Go to the directory where the .db file lives on YOUR system. You may need to
 #' change the path as appropriate.
-#setwd('./Desktop/2017-Spring-TSCI-5050');
+#setwd(paste0(Sys.getenv('HOME'),'/Desktop/2017-Spring-TSCI-5050'));
 #' Open connection
 con <- dbConnect(SQLite(),'./Session_04_SQL_Language_of_Data/exampleinput.db');
 #' See what tables are available in this db file
