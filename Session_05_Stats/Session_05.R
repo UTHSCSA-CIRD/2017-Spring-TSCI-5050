@@ -138,7 +138,7 @@ summary(lm(Y~SEX*BMI_BIN,example_train));
 #' not let it stay that way?
 #' 
 #' Plot Y vs SEX and _unbinned_ BMI
-plot(Y~BMI,subset(example_train,SEX=='m'),ylim=c(0,30),pch='.',cex=8,col="#0000FF20");
+plot(Y~BMI,subset(example_train,SEX=='m'),ylim=c(-10,30),pch='.',cex=8,col="#0000FF20");
 points(Y~BMI,subset(example_train,SEX=='f'),pch='.',cex=8,col="#FF000020");
 #' Here is the regression model.
 sexbmi <- lm(Y~SEX*BMI,example_train);
@@ -150,7 +150,7 @@ plot(sexbmi,pch='.',cex=10,col="#00000030", which = 2);
 #' accounted for by this model.
 #' 
 #' Plot Y vs SEX and AGE
-plot(Y~AGE,subset(example_train,SEX=='m'),ylim=c(0,30),pch='.',cex=8,col="#0000FF20");
+plot(Y~AGE,subset(example_train,SEX=='m'),ylim=c(-10,30),pch='.',cex=8,col="#0000FF20");
 points(Y~AGE,subset(example_train,SEX=='f'),pch='.',cex=8,col="#FF000020");
 #' But really, `Y~AGE` and `Y~BMI` are both two-dimensional projections of a
 #' three-dimensional cloud of data. You could plot `Y` against one while 
