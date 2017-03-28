@@ -26,10 +26,7 @@ smartinstall <- function(pkg,repo='https://cran.rstudio.com',op=old.packages(rep
 #+ warning=FALSE, results='hide'
 # rgl has a bug in its current version number, dealing with it differently
 if(!require(rgl)) install.packages('rgl',repo='https://cran.rstudio.com');
-for(ii in c('tibble','ggplot2','GGally','magrittr','htmlwidgets','htmltools',
-           #'rglwidget',
-           'plot3D','plot3Drgl','misc3d')
-   ) smartinstall(ii,op=.op);
+for(ii in c('tibble','ggplot2','GGally','magrittr','plot3D')) smartinstall(ii,op=.op);
 #' 
 #' ## Another cool trick.
 #' 
@@ -56,7 +53,7 @@ thisDir <- normalizePath(getSrcDirectory(function(xx) xx));
 #' Unless you moved this script out of its directory in which case, that's your 
 #' own fault. ;-)
 #' 
-#' I learned this trick here ... http://stackoverflow.com/questions/1815606/rscript-determine-path-of-the-executing-script
+#' I learned this trick here-- http://stackoverflow.com/questions/1815606/rscript-determine-path-of-the-executing-script
 #' 
 #' Now, on with the lesson.
 #' 
