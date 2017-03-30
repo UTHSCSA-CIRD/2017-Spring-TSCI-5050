@@ -43,3 +43,7 @@ select max(age) from angina where sex="Male";
 select max(age) from angina where sex="Female";
 select max(age) from angina;
 select min(age) from angina where sex="Female";
+select * from angina where cohort =3000;
+select distinct cohort from angina;
+select * from angina where cohort ="3000";
+
