@@ -5,6 +5,7 @@
 #' output: html_document
 #' ---
 #+ echo=FALSE
+
 options(width=300);
 #' ## Cool trick
 #' 
@@ -327,3 +328,18 @@ plot(sexbmiagerace.test,resid(.,level=0)~fitted(.,level=0)|SEX+RACE
      ,abline=0);
 #' Parameter estimates and hypothesis tests.
 summary(sexbmiagerace.test)$tTable
+16%>% sqrt()%>%
+  log() %>%
+  round() ->myresultexa
+example_data$PATIENT_NUM %>%
+unique %>%
+  sample(450)->trainset;
+help (example_data$PATIENT_NUM)
+example_train <- subset(example_data,PATIENT_NUM %in% trainset);
+example_data$PATIENT_NUM%>%
+  setdiff(trainset) %>%
+  sample(450) ->testset; 
+head(iris)
+ggpairs(example_train[sample(1:nrow(example_train),100,])))
+stripchart 
+
