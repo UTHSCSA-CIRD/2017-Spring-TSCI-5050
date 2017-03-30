@@ -4,6 +4,8 @@
 
 # Office Software
 *.doc#
+~*.doc
+~*.xls
 
 # Macintosh
 .DS_Store
