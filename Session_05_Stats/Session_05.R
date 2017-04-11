@@ -8,7 +8,7 @@
 options(width=300);
 library( tibble )
 library( ggplot2 )
-library( GGally )
+#library( GGally )
 library( magrittr )
 library( plot3D )
 #' ## Cool trick
