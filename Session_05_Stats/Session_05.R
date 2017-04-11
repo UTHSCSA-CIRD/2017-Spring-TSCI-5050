@@ -181,8 +181,9 @@ summary(sexbmiage);
 #' How normal are the residuals now?
 plot(sexbmiage,pch='.',cex=10,col="#00000010",which=1);
 plot(sexbmiage,pch='.',cex=10,col="#00000010",which=2);
-#' Some evidence of non-linearity, but much better than before. But do we
-#' _really_ need _all_ these terms? How do we decide which ones to keep?
+#' Some evidence of non-linearity, and awful QQ plot, though perhaps 
+#' better than before. But do we _really_ need _all_ these terms? 
+#' How do we decide which ones to keep?
 sexbmiage.aic <- step(update(sexbmiage,.~SEX+BMI+AGE),
                       scope=list(lower=.~1,upper=.~(.)^3),
                       direction = "both",trace = 3);
@@ -239,6 +240,7 @@ plot(sexbmiage.gls,abline=0);
 #'between-patient variability there is a within-patient variability in the slope
 #'of the `Y` vs `BMI` line.
 plot(sexbmiage.lmeB,abline=0);
+qqnorm(sexbmiage.lmeB,abline=0:1);
 #' But becaues this is an `lme` model rather than an `lm` model means there are
 #' two types of residuals you can print: how far each data-point diverges from
 #' what the model would predict overall, and how far reach datpoint diverges
@@ -253,6 +255,7 @@ plot(sexbmiage.lmeB,abline=0);
 #' respective individuals. You do this by setting `level=0` to the plot
 #' expression...
 plot(sexbmiage.lmeB,resid(.,level=0)~fitted(.,level=0),abline=0);
+qqnorm(sexbmiage.lmeB,level=0,abline=0:1);
 #' Wow. Looks like several distinct clusters here. This could mean that certain
 #' groups of patients are responding differently. If we properly include the
 #' grouping variable in the model, the clustering will go away. When plotting
@@ -282,6 +285,7 @@ sexbmiagerace.lmeB <- stepAIC(sexbmiage.lmeB
 #' This improves the model fit significantly.
 anova(sexbmiage.lmeB,sexbmiagerace.lmeB);
 plot(sexbmiagerace.lmeB,level=0);
+qqnorm(sexbmiagerace.lmeB,level=0,abline=0:1);
 plot(sexbmiagerace.lmeB,resid(.,level=0)~fitted(.,level=0)|SEX+RACE,abline=0);
 #' _This_ is how residuals should look when you're finished. Here are the model
 #' estimates and significance tests.
@@ -323,6 +327,7 @@ sexbmiagerace.test<-update(sexbmiagerace.lmeB
                                            ,AGE=scale(AGE,scale=F)));
 #' How do the residuals look?
 plot(sexbmiagerace.test,resid(.,level=0)~fitted(.,level=0),abline=0);
+qqnorm(sexbmiagerace.test,level=0,abline=0:1);
 plot(sexbmiagerace.test,resid(.,level=0)~fitted(.,level=0)|SEX+RACE
      ,abline=0);
 #' Parameter estimates and hypothesis tests.
