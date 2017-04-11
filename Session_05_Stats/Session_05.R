@@ -12,21 +12,21 @@ options(width=300);
 #' are up to date. I don't want to waste your time installing them 
 #' needlessly, though. So I'm going to declare a function that (re) installs
 #' packages only if they are out of date or missing.
-smartinstall <- function(pkg,repo='https://cran.rstudio.com',op=old.packages(repos=repo)[,'Package']){
-  if(pkg %in% op || !require(pkg,character.only = T)) {
-    install.packages(pkg,repos=repo);
-    library(pkg,character.only = T);
-  }
-}
+# smartinstall <- function(pkg,repo='https://cran.rstudio.com',op=old.packages(repos=repo)[,'Package']){
+#   if(pkg %in% op || !require(pkg,character.only = T)) {
+#     install.packages(pkg,repos=repo);
+#     library(pkg,character.only = T);
+#   }
+# }
 #' `old.packages` gives information about R packages that are out of date.
 #' But it takes a while to run so let's run it once, save it, and then keep
 #' re-using it.
-.op <- old.packages(repos = 'https://cran.rstudio.com')[,'Package'];
+# .op <- old.packages(repos = 'https://cran.rstudio.com')[,'Package'];
 #' ## Load libraries, installing/update if necessary
 #+ warning=FALSE, results='hide'
 # rgl has a bug in its current version number, dealing with it differently
-if(!require(rgl)) install.packages('rgl',repo='https://cran.rstudio.com');
-for(ii in c('tibble','ggplot2','GGally','magrittr','plot3D')) smartinstall(ii,op=.op);
+# if(!require(rgl)) install.packages('rgl',repo='https://cran.rstudio.com');
+# for(ii in c('tibble','ggplot2','GGally','magrittr','plot3D')) smartinstall(ii,op=.op);
 #' 
 #' ## Another cool trick.
 #' 
