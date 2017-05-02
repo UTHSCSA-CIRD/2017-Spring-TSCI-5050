@@ -1,0 +1,1093 @@
+R version 3.3.3 (2017-03-06) -- "Another Canoe"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> getpwd()
+Error: could not find function "getpwd"
+> getwd()
+[1] "/tmp/2017-Spring-TSCI-5050"
+> source('/tmp/2017-Spring-TSCI-5050/Session_05_Stats/Session_05.R')
+Loading objects:
+  example_data
+Start:  AIC=11417.57
+Y ~ SEX + BMI + AGE
+
+          Df Sum of Sq   RSS   AIC
++ SEX:AGE  1    9300.1 84656 11060
++ BMI:AGE  1    1049.0 92907 11381
++ SEX:BMI  1     427.7 93528 11404
+<none>                 93956 11418
+- BMI      1     559.0 94515 11436
+- SEX      1    1823.1 95779 11482
+- AGE      1    4855.3 98811 11590
+
+Step:  AIC=11059.55
+Y ~ SEX + BMI + AGE + SEX:AGE
+
+          Df Sum of Sq   RSS   AIC
++ BMI:AGE  1    3364.4 81291 10922
++ SEX:BMI  1     140.8 84515 11056
+<none>                 84656 11060
+- BMI      1    1042.1 85698 11100
+- SEX:AGE  1    9300.1 93956 11418
+
+Step:  AIC=10921.48
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE
+
+          Df Sum of Sq   RSS   AIC
+<none>                 81291 10922
++ SEX:BMI  1       4.9 81286 10923
+- BMI:AGE  1    3364.4 84656 11060
+- SEX:AGE  1   11615.5 92907 11381
+Start:  AIC=11476.43
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE
+
+          Df   AIC
++ RACE     2 11296
++ SEX:BMI  1 11446
+<none>       11476
+- BMI:AGE  1 11480
+- SEX:AGE  1 11636
+
+Step:  AIC=11296.22
+Y ~ SEX + BMI + AGE + RACE + SEX:AGE + BMI:AGE
+
+Error in solve.default(estimates[dimE[1] - (p:1), dimE[2] - (p:1), drop = FALSE]) : 
+  system is computationally singular: reciprocal condition number = 1.0245e-17
+In addition: Warning messages:
+1: In warn_if_args_exist(list(...)) :
+  Extra arguments: 'size' are being ignored.  If these are meant to be aesthetics, submit them using the 'mapping' variable within ggpairs with ggplot2::aes or ggplot2::aes_string.
+2: In persp.default(plist$xlim, plist$ylim, z = matrix(nrow = 2, ncol = 2,  :
+  zero-length arrow is of indeterminate angle and so skipped
+3: In persp.default(plist$xlim, plist$ylim, z = matrix(nrow = 2, ncol = 2,  :
+  zero-length arrow is of indeterminate angle and so skipped
+4: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+5: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+> sexbmi
+
+Call:
+lm(formula = Y ~ SEX * BMI, data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI     SEXm:BMI  
+    6.41539      5.04593      0.09011     -0.12763  
+
+Warning messages:
+1: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+2: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+3: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+4: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+5: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+6: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+7: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+8: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+9: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+10: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+> sexbmi
+
+Call:
+lm(formula = Y ~ SEX * BMI, data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI     SEXm:BMI  
+    6.41539      5.04593      0.09011     -0.12763  
+
+> update(sexbmi, . ~ . + AGE)
+
+Call:
+lm(formula = Y ~ SEX + BMI + AGE + SEX:BMI, data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI          AGE     SEXm:BMI  
+   10.38990      4.40749      0.08486     -0.06987     -0.09767  
+
+> update(sexbmi, . ~ . * AGE)$call
+lm(formula = Y ~ SEX + BMI + AGE + SEX:BMI + SEX:AGE + BMI:AGE + 
+    SEX:BMI:AGE, data = example_train)
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> update(sexbmi, . ~ . * AGE)
+
+Call:
+lm(formula = Y ~ SEX + BMI + AGE + SEX:BMI + SEX:AGE + BMI:AGE + 
+    SEX:BMI:AGE, data = example_train)
+
+Coefficients:
+ (Intercept)          SEXm           BMI           AGE      SEXm:BMI  
+   -8.073525     23.847468      0.576604      0.289418     -0.325774  
+    SEXm:AGE       BMI:AGE  SEXm:BMI:AGE  
+   -0.399476     -0.009717      0.006019  
+
+> ls()
+ [1] "example_data"   "example_test"   "example_train"  "ii"            
+ [5] "lmec"           "sexbmi"         "sexbmiage"      "sexbmiage.aic" 
+ [9] "sexbmiage.gls"  "sexbmiage.lme"  "sexbmiage.lmeA" "sexbmiage.lmeB"
+[13] "testset"        "thisDir"        "trainset"       "updatePrompt"  
+> save.image(file='/tmp/rdata_working.RData')
+Warning message:
+In save(list = names(.GlobalEnv), file = outfile, version = version,  :
+  'package:methods' may not be available when loading
+> layout(matrix(1:6,nrow=3))
+Warning messages:
+1: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+2: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+3: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+4: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+5: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+6: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+> plot(sexbmiage)
+> plot(sexbmiage,which=1:6)
+> layout(matrix(1:6,nrow=3))
+> plot(sexbmiage,which=1:6)
+> sexbmiage$call
+lm(formula = Y ~ SEX + BMI + AGE + SEX:BMI + SEX:AGE + BMI:AGE + 
+    SEX:BMI:AGE, data = example_train)
+> update(sexbmiage, .~.-SEX:BMI)$call
+lm(formula = Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE + SEX:BMI:AGE, 
+    data = example_train)
+> update(sexbmiage, .~.-.)
+
+Call:
+lm(formula = Y ~ 1, data = example_train)
+
+Coefficients:
+(Intercept)  
+      9.617  
+
+> update(sexbmiage, .~.-.^3)
+
+Call:
+lm(formula = Y ~ 1, data = example_train)
+
+Coefficients:
+(Intercept)  
+      9.617  
+
+> update(sexbmiage, .~.-(.)^3)
+
+Call:
+lm(formula = Y ~ 1, data = example_train)
+
+Coefficients:
+(Intercept)  
+      9.617  
+
+> update(sexbmiage, .~.-(AGE+SEX+BMI)^3)
+
+Call:
+lm(formula = Y ~ 1, data = example_train)
+
+Coefficients:
+(Intercept)  
+      9.617  
+
+> update(sexbmiage, .~.-(AGE+SEX+BMI)^2)
+
+Call:
+lm(formula = Y ~ SEX:BMI:AGE, data = example_train)
+
+Coefficients:
+ (Intercept)  SEXf:BMI:AGE  SEXm:BMI:AGE  
+   11.555231     -0.001196     -0.001077  
+
+> update(sexbmiage, .~.-(AGE:SEX:BMI)^2)
+
+Call:
+lm(formula = Y ~ SEX + BMI + AGE + SEX:BMI + SEX:AGE + BMI:AGE, 
+    data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI  
+  -5.286973    15.085385     0.481925  
+        AGE     SEXm:BMI     SEXm:AGE  
+   0.233673     0.010801    -0.240596  
+    BMI:AGE  
+  -0.007825  
+
+> update(sexbmiage, .~.-(AGE:SEX:BMI)^3)
+
+Call:
+lm(formula = Y ~ SEX + BMI + AGE + SEX:BMI + SEX:AGE + BMI:AGE, 
+    data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI  
+  -5.286973    15.085385     0.481925  
+        AGE     SEXm:BMI     SEXm:AGE  
+   0.233673     0.010801    -0.240596  
+    BMI:AGE  
+  -0.007825  
+
+> update(sexbmiage, .~.-(AGE:SEX:BMI)^(2:3))
+Error in terms.formula(tmp, simplify = TRUE) : invalid power in formula
+> update(sexbmiage, .~.-(AGE+SEX+BMI)^2)
+
+Call:
+lm(formula = Y ~ SEX:BMI:AGE, data = example_train)
+
+Coefficients:
+ (Intercept)  SEXf:BMI:AGE  SEXm:BMI:AGE  
+   11.555231     -0.001196     -0.001077  
+
+> update(sexbmiage, .~ -(AGE+SEX+BMI)^2)
+
+Call:
+lm(formula = Y ~ 1, data = example_train)
+
+Coefficients:
+(Intercept)  
+      9.617  
+
+> update(sexbmiage, .~ AGE+SEX+BMI)$call
+lm(formula = Y ~ AGE + SEX + BMI, data = example_train)
+> step(update(sexbmiage, .~ AGE+SEX+BMI),scope=list(lower=.~1,upper=.~(.)^3)
++ ,direction=both
++ 
++ )
+Error in match.arg(direction) : object 'both' not found
+> step(update(sexbmiage, .~ AGE+SEX+BMI),scope=list(lower=.~1,upper=.~(.)^3),direction="both")
+Start:  AIC=11417.57
+Y ~ AGE + SEX + BMI
+
+          Df Sum of Sq   RSS   AIC
++ AGE:SEX  1    9300.1 84656 11060
++ AGE:BMI  1    1049.0 92907 11381
++ SEX:BMI  1     427.7 93528 11404
+<none>                 93956 11418
+- BMI      1     559.0 94515 11436
+- SEX      1    1823.1 95779 11482
+- AGE      1    4855.3 98811 11590
+
+Step:  AIC=11059.55
+Y ~ AGE + SEX + BMI + AGE:SEX
+
+          Df Sum of Sq   RSS   AIC
++ AGE:BMI  1    3364.4 81291 10922
++ SEX:BMI  1     140.8 84515 11056
+<none>                 84656 11060
+- BMI      1    1042.1 85698 11100
+- AGE:SEX  1    9300.1 93956 11418
+
+Step:  AIC=10921.48
+Y ~ AGE + SEX + BMI + AGE:SEX + AGE:BMI
+
+          Df Sum of Sq   RSS   AIC
+<none>                 81291 10922
++ SEX:BMI  1       4.9 81286 10923
+- AGE:BMI  1    3364.4 84656 11060
+- AGE:SEX  1   11615.5 92907 11381
+
+Call:
+lm(formula = Y ~ AGE + SEX + BMI + AGE:SEX + AGE:BMI, data = example_train)
+
+Coefficients:
+(Intercept)          AGE         SEXm  
+  -5.284675     0.231564    15.358131  
+        BMI     AGE:SEXm      AGE:BMI  
+   0.481584    -0.239840    -0.007751  
+
+> sexbmiage.aic$call
+lm(formula = Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE, data = example_train)
+> sexbmiage.aic$call$formula
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE
+> gls(sexbmiage.aic$call$formula,data=example_train,na.action=na.omit,method='ML')
+Generalized least squares fit by maximum likelihood
+  Model: sexbmiage.aic$call$formula 
+  Data: example_train 
+  Log-likelihood: -10355.75
+
+Coefficients:
+ (Intercept)         SEXm          BMI 
+-5.284674998 15.358131435  0.481583526 
+         AGE     SEXm:AGE      BMI:AGE 
+ 0.231564034 -0.239840366 -0.007751476 
+
+Degrees of freedom: 3454 total; 3448 residual
+Residual standard error: 4.851333 
+> sexbmiage.aic
+
+Call:
+lm(formula = Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE, data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI  
+  -5.284675    15.358131     0.481584  
+        AGE     SEXm:AGE      BMI:AGE  
+   0.231564    -0.239840    -0.007751  
+
+> gls(sexbmiage.aic$call$formula,data=example_train,na.action=na.omit,method='ML')
+Generalized least squares fit by maximum likelihood
+  Model: sexbmiage.aic$call$formula 
+  Data: example_train 
+  Log-likelihood: -10355.75
+
+Coefficients:
+ (Intercept)         SEXm          BMI          AGE     SEXm:AGE 
+-5.284674998 15.358131435  0.481583526  0.231564034 -0.239840366 
+     BMI:AGE 
+-0.007751476 
+
+Degrees of freedom: 3454 total; 3448 residual
+Residual standard error: 4.851333 
+Warning messages:
+1: In doTryCatch(return(expr), name, parentenv, handler) :
+  display list redraw incomplete
+2: In doTryCatch(return(expr), name, parentenv, handler) :
+  invalid graphics state
+3: In doTryCatch(return(expr), name, parentenv, handler) :
+  invalid graphics state
+> gls(sexbmiage.aic$call$formula,data=example_train,na.action=na.omit,method='ML')
+Generalized least squares fit by maximum likelihood
+  Model: sexbmiage.aic$call$formula 
+  Data: example_train 
+  Log-likelihood: -10355.75
+
+Coefficients:
+ (Intercept)         SEXm          BMI          AGE     SEXm:AGE 
+-5.284674998 15.358131435  0.481583526  0.231564034 -0.239840366 
+     BMI:AGE 
+-0.007751476 
+
+Degrees of freedom: 3454 total; 3448 residual
+Residual standard error: 4.851333 
+> sexbmiage.aic
+
+Call:
+lm(formula = Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE, data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI          AGE     SEXm:AGE  
+  -5.284675    15.358131     0.481584     0.231564    -0.239840  
+    BMI:AGE  
+  -0.007751  
+
+> gls(sexbmiage.aic$call$formula,data=example_train,na.action=na.omit,method='ML') -> sexbmiage.gls
+> sexbmiage.gls$call$model
+sexbmiage.aic$call$formula
+> sexbmiage.gls$call$model
+sexbmiage.aic$call$formula
+> eval(sexbmiage.gls$call$model)
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE
+> Kristina<-eval(sexbmiage.gls$call$model)
+> sexbmiagelme1<-lme(Kristina, data=example_train, random = ~1|PATIENT_NUM,control = lmec, method = 'ML')
+Error in na.fail.default(list(Y = c(7.91020785930997, NA, 11.8872217662501,  : 
+  missing values in object
+> sexbmiagelme1<-lme(Kristina, data=example_train, random = ~1|PATIENT_NUM,control = lmec, method = 'ML', na.action = na.omit)
+> summary(sexbmiagelme1)
+Linear mixed-effects model fit by maximum likelihood
+ Data: example_train 
+       AIC      BIC    logLik
+  11931.84 11981.01 -5957.918
+
+Random effects:
+ Formula: ~1 | PATIENT_NUM
+        (Intercept) Residual
+StdDev:    4.582939 1.079904
+
+Fixed effects: list(Kristina) 
+                Value Std.Error   DF    t-value p-value
+(Intercept) -1.557918 1.2333390 3104  -1.263171  0.2066
+SEXm        14.900512 1.0789140  344  13.810657  0.0000
+BMI          0.348795 0.0350368 3104   9.955090  0.0000
+AGE          0.078089 0.0220469 3104   3.541928  0.0004
+SEXm:AGE    -0.223489 0.0195488 3104 -11.432331  0.0000
+BMI:AGE     -0.002812 0.0006252 3104  -4.498387  0.0000
+ Correlation: 
+         (Intr) SEXm   BMI    AGE    SEX:AG
+SEXm     -0.478                            
+BMI      -0.843  0.175                     
+AGE      -0.931  0.420  0.811              
+SEXm:AGE  0.420 -0.881 -0.156 -0.445       
+BMI:AGE   0.793 -0.150 -0.953 -0.840  0.132
+
+Standardized Within-Group Residuals:
+       Min         Q1        Med         Q3        Max 
+-3.0569876 -0.6439362 -0.0121387  0.6212326  5.0424597 
+
+Number of Observations: 3454
+Number of Groups: 346 
+> anova(sexbmiage.aic)
+Analysis of Variance Table
+
+Response: Y
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+SEX          1   1118  1118.5  47.441 6.710e-12 ***
+BMI          1    460   460.4  19.528 1.022e-05 ***
+AGE          1   4855  4855.3 205.941 < 2.2e-16 ***
+SEX:AGE      1   9300  9300.1 394.466 < 2.2e-16 ***
+BMI:AGE      1   3364  3364.4 142.702 < 2.2e-16 ***
+Residuals 3448  81291    23.6                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> anova(sexbmiage.gls)
+Denom. DF: 3448 
+            numDF   F-value p-value
+(Intercept)     1 13548.628  <.0001
+SEX             1    47.441  <.0001
+BMI             1    19.528  <.0001
+AGE             1   205.941  <.0001
+SEX:AGE         1   394.466  <.0001
+BMI:AGE         1   142.702  <.0001
+> anova(sexbmiagelme1)
+            numDF denDF   F-value p-value
+(Intercept)     1  3104 1589.9449  <.0001
+SEX             1   344   49.4195  <.0001
+BMI             1  3104  311.7478  <.0001
+AGE             1  3104   85.1898  <.0001
+SEX:AGE         1  3104  119.5666  <.0001
+BMI:AGE         1  3104   20.2355  <.0001
+> anova(sexbmiage.gls, sexbmiagelme1)
+              Model df      AIC      BIC     logLik   Test  L.Ratio
+sexbmiage.gls     1  7 20725.51 20768.54 -10355.755                
+sexbmiagelme1     2  8 11931.84 11981.01  -5957.918 1 vs 2 8795.674
+              p-value
+sexbmiage.gls        
+sexbmiagelme1  <.0001
+> sexbmiagelme2 <-update(sexbmiagelme1,random=~AGE|PATIENT_NUM)
+> sexbmiagelme3 <-update(sexbmiagelme1,random=~BMI|PATIENT_NUM)
+> anova(sexbmiagelme1,sexbmiagelme2)
+              Model df      AIC      BIC    logLik   Test  L.Ratio
+sexbmiagelme1     1  8 11931.84 11981.01 -5957.918                
+sexbmiagelme2     2 10 11864.52 11926.00 -5922.262 1 vs 2 71.31179
+              p-value
+sexbmiagelme1        
+sexbmiagelme2  <.0001
+> anova(sexbmiagelme1,sexbmiagelme3)
+              Model df      AIC      BIC    logLik   Test L.Ratio
+sexbmiagelme1     1  8 11931.84 11981.01 -5957.918               
+sexbmiagelme3     2 10 11476.43 11537.91 -5728.216 1 vs 2 459.404
+              p-value
+sexbmiagelme1        
+sexbmiagelme3  <.0001
+> plot(sexbmiagelme3)
+Error in .Call.graphics(C_palette2, .Call(C_palette2, NULL)) : 
+  invalid graphics state
+> plot(sexbmiagelme3)
+Error in .Call.graphics(C_palette2, .Call(C_palette2, NULL)) : 
+  invalid graphics state
+> layout(matrix(0))
+Error in layout(matrix(0)) : 
+  layout matrix must contain at least one reference
+to each of the values {1 ... 0}
+> layout(matrix(1))
+Error in .External.graphics(C_layout, num.rows, num.cols, mat, as.integer(num.figures),  : 
+  invalid graphics state
+> dev.list()
+RStudioGD       png 
+        2         3 
+> dev.off(RStudioGD
++ )
+Error in which == 1 : 
+  comparison (1) is possible only for atomic and list types
+> dev.off()
+null device 
+          1 
+> plot(sexbmiagelme3)
+> sexbmiage.aic$call$formula
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE
+> formula01 <- sexbmiage.aic$call$formula
+> formula01
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE
+> class(formula01)
+[1] "formula"
+> class(sexbmiage.aic$call$formula)
+[1] "formula"
+> class(sexbmiage.gls$call$model)
+[1] "call"
+> sexbmiage.gls$call$model <- sexbmiage.aic$call$formula
+> class(sexbmiage.gls$call$model)
+[1] "formula"
+> sexbmiage.gls$call$model
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGER version 3.3.3 (2017-03-06) -- "Another Canoe"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> getpwd()
+Error: could not find function "getpwd"
+> getwd()
+[1] "/tmp/2017-Spring-TSCI-5050"
+> source('/tmp/2017-Spring-TSCI-5050/Session_05_Stats/Session_05.R')
+Loading objects:
+  example_data
+Start:  AIC=11417.57
+Y ~ SEX + BMI + AGE
+
+          Df Sum of Sq   RSS   AIC
++ SEX:AGE  1    9300.1 84656 11060
++ BMI:AGE  1    1049.0 92907 11381
++ SEX:BMI  1     427.7 93528 11404
+<none>                 93956 11418
+- BMI      1     559.0 94515 11436
+- SEX      1    1823.1 95779 11482
+- AGE      1    4855.3 98811 11590
+
+Step:  AIC=11059.55
+Y ~ SEX + BMI + AGE + SEX:AGE
+
+          Df Sum of Sq   RSS   AIC
++ BMI:AGE  1    3364.4 81291 10922
++ SEX:BMI  1     140.8 84515 11056
+<none>                 84656 11060
+- BMI      1    1042.1 85698 11100
+- SEX:AGE  1    9300.1 93956 11418
+
+Step:  AIC=10921.48
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE
+
+          Df Sum of Sq   RSS   AIC
+<none>                 81291 10922
++ SEX:BMI  1       4.9 81286 10923
+- BMI:AGE  1    3364.4 84656 11060
+- SEX:AGE  1   11615.5 92907 11381
+Start:  AIC=11476.43
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE
+
+          Df   AIC
++ RACE     2 11296
++ SEX:BMI  1 11446
+<none>       11476
+- BMI:AGE  1 11480
+- SEX:AGE  1 11636
+
+Step:  AIC=11296.22
+Y ~ SEX + BMI + AGE + RACE + SEX:AGE + BMI:AGE
+
+Error in solve.default(estimates[dimE[1] - (p:1), dimE[2] - (p:1), drop = FALSE]) : 
+  system is computationally singular: reciprocal condition number = 1.0245e-17
+In addition: Warning messages:
+1: In warn_if_args_exist(list(...)) :
+  Extra arguments: 'size' are being ignored.  If these are meant to be aesthetics, submit them using the 'mapping' variable within ggpairs with ggplot2::aes or ggplot2::aes_string.
+2: In persp.default(plist$xlim, plist$ylim, z = matrix(nrow = 2, ncol = 2,  :
+  zero-length arrow is of indeterminate angle and so skipped
+3: In persp.default(plist$xlim, plist$ylim, z = matrix(nrow = 2, ncol = 2,  :
+  zero-length arrow is of indeterminate angle and so skipped
+4: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+5: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+> sexbmi
+
+Call:
+lm(formula = Y ~ SEX * BMI, data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI     SEXm:BMI  
+    6.41539      5.04593      0.09011     -0.12763  
+
+Warning messages:
+1: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+2: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+3: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+4: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+5: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+6: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+7: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+8: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+9: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+10: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+> sexbmi
+
+Call:
+lm(formula = Y ~ SEX * BMI, data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI     SEXm:BMI  
+    6.41539      5.04593      0.09011     -0.12763  
+
+> update(sexbmi, . ~ . + AGE)
+
+Call:
+lm(formula = Y ~ SEX + BMI + AGE + SEX:BMI, data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI          AGE     SEXm:BMI  
+   10.38990      4.40749      0.08486     -0.06987     -0.09767  
+
+> update(sexbmi, . ~ . * AGE)$call
+lm(formula = Y ~ SEX + BMI + AGE + SEX:BMI + SEX:AGE + BMI:AGE + 
+    SEX:BMI:AGE, data = example_train)
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> update(sexbmi, . ~ . * AGE)
+
+Call:
+lm(formula = Y ~ SEX + BMI + AGE + SEX:BMI + SEX:AGE + BMI:AGE + 
+    SEX:BMI:AGE, data = example_train)
+
+Coefficients:
+ (Intercept)          SEXm           BMI           AGE      SEXm:BMI  
+   -8.073525     23.847468      0.576604      0.289418     -0.325774  
+    SEXm:AGE       BMI:AGE  SEXm:BMI:AGE  
+   -0.399476     -0.009717      0.006019  
+
+> ls()
+ [1] "example_data"   "example_test"   "example_train"  "ii"            
+ [5] "lmec"           "sexbmi"         "sexbmiage"      "sexbmiage.aic" 
+ [9] "sexbmiage.gls"  "sexbmiage.lme"  "sexbmiage.lmeA" "sexbmiage.lmeB"
+[13] "testset"        "thisDir"        "trainset"       "updatePrompt"  
+> save.image(file='/tmp/rdata_working.RData')
+Warning message:
+In save(list = names(.GlobalEnv), file = outfile, version = version,  :
+  'package:methods' may not be available when loading
+> layout(matrix(1:6,nrow=3))
+Warning messages:
+1: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+2: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+3: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+4: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+5: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+6: In doTryCatch(return(expr), name, parentenv, handler) :
+  zero-length arrow is of indeterminate angle and so skipped
+> plot(sexbmiage)
+> plot(sexbmiage,which=1:6)
+> layout(matrix(1:6,nrow=3))
+> plot(sexbmiage,which=1:6)
+> sexbmiage$call
+lm(formula = Y ~ SEX + BMI + AGE + SEX:BMI + SEX:AGE + BMI:AGE + 
+    SEX:BMI:AGE, data = example_train)
+> update(sexbmiage, .~.-SEX:BMI)$call
+lm(formula = Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE + SEX:BMI:AGE, 
+    data = example_train)
+> update(sexbmiage, .~.-.)
+
+Call:
+lm(formula = Y ~ 1, data = example_train)
+
+Coefficients:
+(Intercept)  
+      9.617  
+
+> update(sexbmiage, .~.-.^3)
+
+Call:
+lm(formula = Y ~ 1, data = example_train)
+
+Coefficients:
+(Intercept)  
+      9.617  
+
+> update(sexbmiage, .~.-(.)^3)
+
+Call:
+lm(formula = Y ~ 1, data = example_train)
+
+Coefficients:
+(Intercept)  
+      9.617  
+
+> update(sexbmiage, .~.-(AGE+SEX+BMI)^3)
+
+Call:
+lm(formula = Y ~ 1, data = example_train)
+
+Coefficients:
+(Intercept)  
+      9.617  
+
+> update(sexbmiage, .~.-(AGE+SEX+BMI)^2)
+
+Call:
+lm(formula = Y ~ SEX:BMI:AGE, data = example_train)
+
+Coefficients:
+ (Intercept)  SEXf:BMI:AGE  SEXm:BMI:AGE  
+   11.555231     -0.001196     -0.001077  
+
+> update(sexbmiage, .~.-(AGE:SEX:BMI)^2)
+
+Call:
+lm(formula = Y ~ SEX + BMI + AGE + SEX:BMI + SEX:AGE + BMI:AGE, 
+    data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI  
+  -5.286973    15.085385     0.481925  
+        AGE     SEXm:BMI     SEXm:AGE  
+   0.233673     0.010801    -0.240596  
+    BMI:AGE  
+  -0.007825  
+
+> update(sexbmiage, .~.-(AGE:SEX:BMI)^3)
+
+Call:
+lm(formula = Y ~ SEX + BMI + AGE + SEX:BMI + SEX:AGE + BMI:AGE, 
+    data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI  
+  -5.286973    15.085385     0.481925  
+        AGE     SEXm:BMI     SEXm:AGE  
+   0.233673     0.010801    -0.240596  
+    BMI:AGE  
+  -0.007825  
+
+> update(sexbmiage, .~.-(AGE:SEX:BMI)^(2:3))
+Error in terms.formula(tmp, simplify = TRUE) : invalid power in formula
+> update(sexbmiage, .~.-(AGE+SEX+BMI)^2)
+
+Call:
+lm(formula = Y ~ SEX:BMI:AGE, data = example_train)
+
+Coefficients:
+ (Intercept)  SEXf:BMI:AGE  SEXm:BMI:AGE  
+   11.555231     -0.001196     -0.001077  
+
+> update(sexbmiage, .~ -(AGE+SEX+BMI)^2)
+
+Call:
+lm(formula = Y ~ 1, data = example_train)
+
+Coefficients:
+(Intercept)  
+      9.617  
+
+> update(sexbmiage, .~ AGE+SEX+BMI)$call
+lm(formula = Y ~ AGE + SEX + BMI, data = example_train)
+> step(update(sexbmiage, .~ AGE+SEX+BMI),scope=list(lower=.~1,upper=.~(.)^3)
++ ,direction=both
++ 
++ )
+Error in match.arg(direction) : object 'both' not found
+> step(update(sexbmiage, .~ AGE+SEX+BMI),scope=list(lower=.~1,upper=.~(.)^3),direction="both")
+Start:  AIC=11417.57
+Y ~ AGE + SEX + BMI
+
+          Df Sum of Sq   RSS   AIC
++ AGE:SEX  1    9300.1 84656 11060
++ AGE:BMI  1    1049.0 92907 11381
++ SEX:BMI  1     427.7 93528 11404
+<none>                 93956 11418
+- BMI      1     559.0 94515 11436
+- SEX      1    1823.1 95779 11482
+- AGE      1    4855.3 98811 11590
+
+Step:  AIC=11059.55
+Y ~ AGE + SEX + BMI + AGE:SEX
+
+          Df Sum of Sq   RSS   AIC
++ AGE:BMI  1    3364.4 81291 10922
++ SEX:BMI  1     140.8 84515 11056
+<none>                 84656 11060
+- BMI      1    1042.1 85698 11100
+- AGE:SEX  1    9300.1 93956 11418
+
+Step:  AIC=10921.48
+Y ~ AGE + SEX + BMI + AGE:SEX + AGE:BMI
+
+          Df Sum of Sq   RSS   AIC
+<none>                 81291 10922
++ SEX:BMI  1       4.9 81286 10923
+- AGE:BMI  1    3364.4 84656 11060
+- AGE:SEX  1   11615.5 92907 11381
+
+Call:
+lm(formula = Y ~ AGE + SEX + BMI + AGE:SEX + AGE:BMI, data = example_train)
+
+Coefficients:
+(Intercept)          AGE         SEXm  
+  -5.284675     0.231564    15.358131  
+        BMI     AGE:SEXm      AGE:BMI  
+   0.481584    -0.239840    -0.007751  
+
+> sexbmiage.aic$call
+lm(formula = Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE, data = example_train)
+> sexbmiage.aic$call$formula
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE
+> gls(sexbmiage.aic$call$formula,data=example_train,na.action=na.omit,method='ML')
+Generalized least squares fit by maximum likelihood
+  Model: sexbmiage.aic$call$formula 
+  Data: example_train 
+  Log-likelihood: -10355.75
+
+Coefficients:
+ (Intercept)         SEXm          BMI 
+-5.284674998 15.358131435  0.481583526 
+         AGE     SEXm:AGE      BMI:AGE 
+ 0.231564034 -0.239840366 -0.007751476 
+
+Degrees of freedom: 3454 total; 3448 residual
+Residual standard error: 4.851333 
+> sexbmiage.aic
+
+Call:
+lm(formula = Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE, data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI  
+  -5.284675    15.358131     0.481584  
+        AGE     SEXm:AGE      BMI:AGE  
+   0.231564    -0.239840    -0.007751  
+
+> gls(sexbmiage.aic$call$formula,data=example_train,na.action=na.omit,method='ML')
+Generalized least squares fit by maximum likelihood
+  Model: sexbmiage.aic$call$formula 
+  Data: example_train 
+  Log-likelihood: -10355.75
+
+Coefficients:
+ (Intercept)         SEXm          BMI          AGE     SEXm:AGE 
+-5.284674998 15.358131435  0.481583526  0.231564034 -0.239840366 
+     BMI:AGE 
+-0.007751476 
+
+Degrees of freedom: 3454 total; 3448 residual
+Residual standard error: 4.851333 
+Warning messages:
+1: In doTryCatch(return(expr), name, parentenv, handler) :
+  display list redraw incomplete
+2: In doTryCatch(return(expr), name, parentenv, handler) :
+  invalid graphics state
+3: In doTryCatch(return(expr), name, parentenv, handler) :
+  invalid graphics state
+> gls(sexbmiage.aic$call$formula,data=example_train,na.action=na.omit,method='ML')
+Generalized least squares fit by maximum likelihood
+  Model: sexbmiage.aic$call$formula 
+  Data: example_train 
+  Log-likelihood: -10355.75
+
+Coefficients:
+ (Intercept)         SEXm          BMI          AGE     SEXm:AGE 
+-5.284674998 15.358131435  0.481583526  0.231564034 -0.239840366 
+     BMI:AGE 
+-0.007751476 
+
+Degrees of freedom: 3454 total; 3448 residual
+Residual standard error: 4.851333 
+> sexbmiage.aic
+
+Call:
+lm(formula = Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE, data = example_train)
+
+Coefficients:
+(Intercept)         SEXm          BMI          AGE     SEXm:AGE  
+  -5.284675    15.358131     0.481584     0.231564    -0.239840  
+    BMI:AGE  
+  -0.007751  
+
+> gls(sexbmiage.aic$call$formula,data=example_train,na.action=na.omit,method='ML') -> sexbmiage.gls
+> sexbmiage.gls$call$model
+sexbmiage.aic$call$formula
+> sexbmiage.gls$call$model
+sexbmiage.aic$call$formula
+> eval(sexbmiage.gls$call$model)
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE
+> Kristina<-eval(sexbmiage.gls$call$model)
+> sexbmiagelme1<-lme(Kristina, data=example_train, random = ~1|PATIENT_NUM,control = lmec, method = 'ML')
+Error in na.fail.default(list(Y = c(7.91020785930997, NA, 11.8872217662501,  : 
+  missing values in object
+> sexbmiagelme1<-lme(Kristina, data=example_train, random = ~1|PATIENT_NUM,control = lmec, method = 'ML', na.action = na.omit)
+> summary(sexbmiagelme1)
+Linear mixed-effects model fit by maximum likelihood
+ Data: example_train 
+       AIC      BIC    logLik
+  11931.84 11981.01 -5957.918
+
+Random effects:
+ Formula: ~1 | PATIENT_NUM
+        (Intercept) Residual
+StdDev:    4.582939 1.079904
+
+Fixed effects: list(Kristina) 
+                Value Std.Error   DF    t-value p-value
+(Intercept) -1.557918 1.2333390 3104  -1.263171  0.2066
+SEXm        14.900512 1.0789140  344  13.810657  0.0000
+BMI          0.348795 0.0350368 3104   9.955090  0.0000
+AGE          0.078089 0.0220469 3104   3.541928  0.0004
+SEXm:AGE    -0.223489 0.0195488 3104 -11.432331  0.0000
+BMI:AGE     -0.002812 0.0006252 3104  -4.498387  0.0000
+ Correlation: 
+         (Intr) SEXm   BMI    AGE    SEX:AG
+SEXm     -0.478                            
+BMI      -0.843  0.175                     
+AGE      -0.931  0.420  0.811              
+SEXm:AGE  0.420 -0.881 -0.156 -0.445       
+BMI:AGE   0.793 -0.150 -0.953 -0.840  0.132
+
+Standardized Within-Group Residuals:
+       Min         Q1        Med         Q3        Max 
+-3.0569876 -0.6439362 -0.0121387  0.6212326  5.0424597 
+
+Number of Observations: 3454
+Number of Groups: 346 
+> anova(sexbmiage.aic)
+Analysis of Variance Table
+
+Response: Y
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+SEX          1   1118  1118.5  47.441 6.710e-12 ***
+BMI          1    460   460.4  19.528 1.022e-05 ***
+AGE          1   4855  4855.3 205.941 < 2.2e-16 ***
+SEX:AGE      1   9300  9300.1 394.466 < 2.2e-16 ***
+BMI:AGE      1   3364  3364.4 142.702 < 2.2e-16 ***
+Residuals 3448  81291    23.6                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> anova(sexbmiage.gls)
+Denom. DF: 3448 
+            numDF   F-value p-value
+(Intercept)     1 13548.628  <.0001
+SEX             1    47.441  <.0001
+BMI             1    19.528  <.0001
+AGE             1   205.941  <.0001
+SEX:AGE         1   394.466  <.0001
+BMI:AGE         1   142.702  <.0001
+> anova(sexbmiagelme1)
+            numDF denDF   F-value p-value
+(Intercept)     1  3104 1589.9449  <.0001
+SEX             1   344   49.4195  <.0001
+BMI             1  3104  311.7478  <.0001
+AGE             1  3104   85.1898  <.0001
+SEX:AGE         1  3104  119.5666  <.0001
+BMI:AGE         1  3104   20.2355  <.0001
+> anova(sexbmiage.gls, sexbmiagelme1)
+              Model df      AIC      BIC     logLik   Test  L.Ratio
+sexbmiage.gls     1  7 20725.51 20768.54 -10355.755                
+sexbmiagelme1     2  8 11931.84 11981.01  -5957.918 1 vs 2 8795.674
+              p-value
+sexbmiage.gls        
+sexbmiagelme1  <.0001
+> sexbmiagelme2 <-update(sexbmiagelme1,random=~AGE|PATIENT_NUM)
+> sexbmiagelme3 <-update(sexbmiagelme1,random=~BMI|PATIENT_NUM)
+> anova(sexbmiagelme1,sexbmiagelme2)
+              Model df      AIC      BIC    logLik   Test  L.Ratio
+sexbmiagelme1     1  8 11931.84 11981.01 -5957.918                
+sexbmiagelme2     2 10 11864.52 11926.00 -5922.262 1 vs 2 71.31179
+              p-value
+sexbmiagelme1        
+sexbmiagelme2  <.0001
+> anova(sexbmiagelme1,sexbmiagelme3)
+              Model df      AIC      BIC    logLik   Test L.Ratio
+sexbmiagelme1     1  8 11931.84 11981.01 -5957.918               
+sexbmiagelme3     2 10 11476.43 11537.91 -5728.216 1 vs 2 459.404
+              p-value
+sexbmiagelme1        
+sexbmiagelme3  <.0001
+> plot(sexbmiagelme3)
+Error in .Call.graphics(C_palette2, .Call(C_palette2, NULL)) : 
+  invalid graphics state
+> plot(sexbmiagelme3)
+Error in .Call.graphics(C_palette2, .Call(C_palette2, NULL)) : 
+  invalid graphics state
+> layout(matrix(0))
+Error in layout(matrix(0)) : 
+  layout matrix must contain at least one reference
+to each of the values {1 ... 0}
+> layout(matrix(1))
+Error in .External.graphics(C_layout, num.rows, num.cols, mat, as.integer(num.figures),  : 
+  invalid graphics state
+> dev.list()
+RStudioGD       png 
+        2         3 
+> dev.off(RStudioGD
++ )
+Error in which == 1 : 
+  comparison (1) is possible only for atomic and list types
+> dev.off()
+null device 
+          1 
+> plot(sexbmiagelme3)
+> sexbmiage.aic$call$formula
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE
+> formula01 <- sexbmiage.aic$call$formula
+> formula01
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE
+> class(formula01)
+[1] "formula"
+> class(sexbmiage.aic$call$formula)
+[1] "formula"
+> class(sexbmiage.gls$call$model)
+[1] "call"
+> sexbmiage.gls$call$model <- sexbmiage.aic$call$formula
+> class(sexbmiage.gls$call$model)
+[1] "formula"
+> sexbmiage.gls$call$model
+Y ~ SEX + BMI + AGE + SEX:AGE + BMI:AGE
