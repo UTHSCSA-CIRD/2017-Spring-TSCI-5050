@@ -6,6 +6,11 @@
 #' ---
 #+ echo=FALSE
 options(width=300);
+library( tibble )
+library( ggplot2 )
+#library( GGally )
+library( magrittr )
+library( plot3D )
 #' ## Cool trick
 #' 
 #' I don't know what kind of packages you have, and whether or not they
